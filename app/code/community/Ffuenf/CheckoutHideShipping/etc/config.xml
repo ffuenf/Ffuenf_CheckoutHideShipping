@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_CheckoutHideShipping extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   Ffuenf
+ *
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<config>
+    <modules>
+        <Ffuenf_CheckoutHideShipping>
+            <version>1.0.0</version>
+        </Ffuenf_CheckoutHideShipping>
+    </modules>
+    <global>
+        <helpers>
+            <ffuenf_checkouthideshipping>
+                <class>Ffuenf_CheckoutHideShipping_Helper</class>
+            </ffuenf_checkouthideshipping>
+        </helpers>
+        <blocks>
+            <ffuenf_checkouthideshipping>
+                <class>Ffuenf_CheckoutHideShipping_Block</class>
+            </ffuenf_checkouthideshipping>
+        </blocks>
+        <models>
+            <ffuenf_checkouthideshipping>
+                <class>Ffuenf_CheckoutHideShipping_Model</class>
+            </ffuenf_checkouthideshipping>
+        </models>
+        <resources>
+            <ffuenf_checkouthideshipping_setup>
+                <setup>
+                    <module>Ffuenf_CheckoutHideShipping</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </ffuenf_checkouthideshipping_setup>
+        </resources>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_postdispatch_checkout_onepage_saveBilling>
+                <observers>
+                    <ffuenf_checkouthideshipping_skip_shipping_method>
+                        <type>singleton</type>
+                        <class>ffuenf_checkouthideshipping/observer</class>
+                        <method>controllerActionPostdispatchCheckoutOnepageSaveBilling</method>
+                    </ffuenf_checkouthideshipping_skip_shipping_method>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_saveBilling>
+            <controller_action_postdispatch_checkout_onepage_saveShipping>
+                <observers>
+                    <ffuenf_checkouthideshipping_skip_shipping_method>
+                        <type>singleton</type>
+                        <class>ffuenf_checkouthideshipping/observer</class>
+                        <method>controllerActionPostdispatchCheckoutOnepageSaveBilling</method>
+                    </ffuenf_checkouthideshipping_skip_shipping_method>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_saveShipping>
+        </events>
+    </frontend>
+    <default>
+        <ffuenf_checkouthideshipping>
+            <general>
+                <enable>1</enable>
+            </general>
+        </ffuenf_checkouthideshipping>
+    </default>
+    <uninstall>
+        <filename>uninstall.txt</filename>
+    </uninstall>
+    <phpunit>
+        <suite>
+            <modules>
+                <Ffuenf_CheckoutHideShipping/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>
