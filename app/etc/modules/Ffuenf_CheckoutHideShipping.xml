@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+     <modules>
+        <Ffuenf_CheckoutHideShipping>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Checkout />
+                <Ffuenf_Common />
+            </depends>
+        </Ffuenf_CheckoutHideShipping>
+     </modules>
+</config>

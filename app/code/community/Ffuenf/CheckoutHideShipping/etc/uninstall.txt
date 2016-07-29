@@ -1,0 +1,2 @@
+app/code/community/Ffuenf/CheckoutHideShipping
+app/etc/modules/Ffuenf_CheckoutHideShipping.xml
