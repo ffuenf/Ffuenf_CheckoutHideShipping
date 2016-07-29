@@ -4,13 +4,13 @@ Ffuenf_CheckoutHideShipping
 ===========================
 [![GitHub tag](https://img.shields.io/github/tag/ffuenf/Ffuenf_CheckoutHideShipping.svg)][tag]
 [![Build Status](https://img.shields.io/travis/ffuenf/Ffuenf_CheckoutHideShipping.svg)][travis]
-[![VersionEye](https://www.versioneye.com/user/projects//badge.svg)][versioneye]
+[![VersionEye](https://www.versioneye.com/user/projects/579b62ac86beaf004966bc29/badge.svg)][versioneye]
 [![Code Quality](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CheckoutHideShipping/badges/quality-score.png)][code_quality]
 [![Code Coverage](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CheckoutHideShipping/badges/coverage.png)][code_coverage]
 [![PayPal Donate](https://img.shields.io/badge/paypal-donate-blue.svg)][paypal_donate]
 [tag]: https://github.com/ffuenf/Ffuenf_CheckoutHideShipping
 [travis]: https://travis-ci.org/ffuenf/Ffuenf_CheckoutHideShipping
-[versioneye]: https://www.versioneye.com/user/projects/
+[versioneye]: https://www.versioneye.com/user/projects/579b62ac86beaf004966bc29
 [code_quality]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CheckoutHideShipping
 [code_coverage]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_CheckoutHideShipping
 [paypal_donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J2PQS2WLT2Y8W&item_name=Magento%20Extension%3a%20Ffuenf_CheckoutHideShipping&item_number=Ffuenf_CheckoutHideShipping&currency_code=EUR
