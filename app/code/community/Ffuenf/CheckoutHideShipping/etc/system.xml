@@ -52,6 +52,18 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </enable>
+                        <default_shipping translate="label" module="ffuenf_checkouthideshipping">
+                            <label>Default Shipping Method</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_checkouthideshipping/system_config_source_shippingmethod</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </default_shipping>
                     </fields>
                 </general>
                 <log translate="label, comment" module="ffuenf_common">
