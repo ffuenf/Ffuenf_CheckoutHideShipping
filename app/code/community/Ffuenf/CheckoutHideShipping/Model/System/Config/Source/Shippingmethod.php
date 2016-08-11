@@ -20,18 +20,18 @@ class Ffuenf_CheckoutHideShipping_Model_System_Config_Source_Shippingmethod
 {
     public function toOptionArray()
     {
-        $methods = array(array('value'=>'','label'=>Mage::helper('adminhtml')->__('--Please Select--')));
+        $methods = array(array('value' => '', 'label' => Mage::helper('adminhtml')->__('--Please Select--')));
         $activeCarriers = Mage::getSingleton('shipping/config')->getActiveCarriers();
         foreach ($activeCarriers as $carrierCode => $carrierModel) {
             $options = array();
             if ($carrierMethods = $carrierModel->getAllowedMethods()) {
                 foreach ($carrierMethods as $methodCode => $method) {
-                    $code= $carrierCode.'_'.$methodCode;
-                    $options[] = array('value' => $code,'label' => $method . " ($code)");
+                    $code = $carrierCode . '_' . $methodCode;
+                    $options[] = array('value' => $code, 'label' => $method . " ($code)");
                 }
-                $carrierTitle = Mage::getStoreConfig('carriers/'.$carrierCode.'/title');
             }
-            $methods[] = array('value' => $options,'label' => $carrierTitle);
+            $carrierTitle = Mage::getStoreConfig('carriers/' . $carrierCode . '/title');
+            $methods[] = array('value' => $options, 'label' => $carrierTitle);
         }
         return $methods;
     }
