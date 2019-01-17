@@ -33,7 +33,7 @@ class Ffuenf_CheckoutHideShipping_Model_Observer
             return;
         }
         $response = Mage::helper('core')->jsonDecode($response['default']);
-        if ($response['goto_section'] == 'shipping_method') {
+        if (isset($response['goto_section']) && $response['goto_section'] == 'shipping_method') {
             $response['goto_section'] = 'payment';
             $response['update_section'] = array(
                 'name' => 'payment-method',
