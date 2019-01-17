@@ -12,7 +12,7 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2019 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -41,7 +41,7 @@ class Ffuenf_CheckoutHideShipping_Model_Observer
             return $this;
         }
         $response = Mage::helper('core')->jsonDecode($response['default']);
-        if ($response['goto_section'] == 'shipping_method') {
+        if (isset($response['goto_section']) && $response['goto_section'] == 'shipping_method') {
             $response['goto_section'] = 'payment';
             $response['update_section'] = array(
                 'name' => 'payment-method',
