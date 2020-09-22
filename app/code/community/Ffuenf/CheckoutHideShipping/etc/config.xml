@@ -68,6 +68,15 @@
                     </ffuenf_checkouthideshipping_skip_shipping_method>
                 </observers>
             </controller_action_postdispatch_checkout_onepage_saveShipping>
+            <sales_quote_collect_totals_before>
+                <observers>
+                    <ffuenf_checkouthideshipping_skip_shipping_method>
+                        <type>singleton</type>
+                        <class>ffuenf_checkouthideshipping/observer</class>
+                        <method>setQuoteShippingMethod</method>
+                    </ffuenf_checkouthideshipping_skip_shipping_method>
+                </observers>
+            </sales_quote_collect_totals_before>
         </events>
     </frontend>
     <default>

@@ -39,6 +39,11 @@ class Ffuenf_CheckoutHideShipping_Helper_Data extends Ffuenf_Common_Helper_Core
     const CONFIG_EXTENSION_LOG_EXCEPTION_ACTIVE = 'ffuenf_checkouthideshipping/log/exception_enable';
 
     /**
+     * Path for the config for the default shipping method.
+     */
+    const CONFIG_EXTENSION_GENERAL_DEFAULTSHIPPING = 'ffuenf_checkouthideshipping/general/default_shipping';
+
+    /**
      * Variable for if the extension is active.
      *
      * @var bool
@@ -85,16 +90,13 @@ class Ffuenf_CheckoutHideShipping_Helper_Data extends Ffuenf_Common_Helper_Core
         return Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_LOG_EXCEPTION_ACTIVE);
     }
 
-    public function getHideShipping()
-    {
-        if (!$this->isExtensionActive() || !$this->getDefaultShippingMethod()){
-            return false;
-        }
-        return true;
-    }
-
+    /**
+     * Get the default shipping method
+     *
+     * @return string
+     */
     public function getDefaultShippingMethod()
     {
-        return Mage::getStoreConfig('ffuenf_checkouthideshipping/general/default_shipping');
+        return Mage::getStoreConfig(self::CONFIG_EXTENSION_GENERAL_DEFAULTSHIPPING);
     }
 }

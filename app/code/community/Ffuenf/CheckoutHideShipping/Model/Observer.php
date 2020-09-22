@@ -19,18 +19,26 @@
 class Ffuenf_CheckoutHideShipping_Model_Observer
 {
     /**
+     * Has shipping been applied to quote?
+     *
+     * @var bool
+     */
+    protected $_hasShipping = false;
+
+    /**
      * @param Varien_Event_Observer $observer
+     * @return Ffuenf_CheckoutHideShipping_Model_Observer
      */
     public function controllerActionPostdispatchCheckoutOnepageSaveBilling(Varien_Event_Observer $observer)
     {
         if (!Mage::helper('ffuenf_checkouthideshipping')->isExtensionActive()) {
-            return;
+            return $this;
         }
         /* @var $controller Mage_Checkout_OnepageController */
         $controller = $observer->getEvent()->getControllerAction();
         $response = Mage::app()->getFrontController()->getResponse()->getBody(true);
         if (!isset($response['default'])) {
-            return;
+            return $this;
         }
         $response = Mage::helper('core')->jsonDecode($response['default']);
         if (isset($response['goto_section']) && $response['goto_section'] == 'shipping_method') {
@@ -41,11 +49,36 @@ class Ffuenf_CheckoutHideShipping_Model_Observer
             );
             $controller->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
         }
+        return $this;
+    }
+
+    /**
+     * Set shipping method and rate if they do not exist yet
+     * @return Ffuenf_CheckoutHideShipping_Model_Observer
+     */
+    public function setQuoteShippingMethod()
+    {
+        if (!$this->_hasShipping) {
+            $this->_hasShipping = true;
+            $quote = Mage::helper('checkout/cart')->getQuote();
+            if (!$quote->getId()) {
+                return $this;
+            }
+            $shippingMethod = $quote->getShippingAddress()->getShippingMethod();
+            if ($shippingMethod) {
+                return $this;
+            }
+            $shippingAddress = $quote->getShippingAddress();
+            $method = Mage::helper('ffuenf_checkouthideshipping')->getDefaultShippingMethod();
+            $shippingAddress->setShippingMethod($method)->setCollectShippingRates(true);
+            $shippingAddress->save();
+            $quote->save();
+        }
+        return $this;
     }
 
     /**
      * @return string
-     * @throws Mage_Core_Exception
      */
     protected function _getPaymentMethodsHtml()
     {
